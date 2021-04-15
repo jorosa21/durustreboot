@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "app": {
+        "project": "nobleui-angular",
+        "target": "build",
+        "configuration": "production",
+        "path": "dist"
+      },
+      "azureHosting": {
+        "subscription": "1128cca1-bcb1-4881-b2eb-a36727064077",
+        "resourceGroupName": "nobleui-angular-static-deploy",
+        "account": "nobleuiangularstatic"
+      }
+    }
+  ]
+}

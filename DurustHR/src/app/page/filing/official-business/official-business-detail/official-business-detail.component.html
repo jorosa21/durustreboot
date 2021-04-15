@@ -1,0 +1,95 @@
+<div *ngIf="isLoading" class="spinner-wrapper">
+  <div class="spinner">Loading...</div>
+</div>
+<div class="animate__animated animate__fadeInUp" *ngIf="!isLoading">
+  <nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Filing</a></li>
+      <li class="breadcrumb-item"><a routerLink="/layout/filing/official-business-view">Official Business</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Detail</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Official Business</h6>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Company To Visit</label>
+                    <input type="text" class="form-control" placeholder="Company To Visit">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Location</label>
+                    <input type="text" class="form-control" placeholder="Location">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Date</label>
+                    <div class="input-group">
+                      <input class="form-control" placeholder="mm/dd/yyyy"
+                          name="dp" formControlName="selectedDate" (click)="df.toggle()" ngbDatepicker #df="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-light btn-icon calendar" type="button" (click)="df.toggle()">
+                          <i data-feather="calendar" appFeatherIcon class="text-secondary"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Time In</label>
+                    <ng-template #popTimeIn>
+                      <timepicker (ngModelChange)="setTimeIn($event)" [ngModelOptions]="{standalone: true}" [(ngModel)]="timeIn" [showMeridian]="true"></timepicker>
+                    </ng-template>
+                    <input type="text" formControlName="timeIn" class="form-control"placeholder="HH:MM AM/PM" [popover]="popTimeIn" [outsideClick]="true" placement="bottom" />
+                    <p class="text-danger mt-1" *ngIf="errTimeIn">Please input time in!</p>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="control-label">Time Out</label>
+                    <ng-template #popTimeOut>
+                      <timepicker [ngModelOptions]="{standalone: true}" (ngModelChange)="setTimeOut($event)" [(ngModel)]="timeOut" [showMeridian]="true"></timepicker>
+                    </ng-template>
+                    <input type="text" formControlName="timeOut" class="form-control"placeholder="HH:MM AM/PM" [popover]="popTimeOut" [outsideClick]="true" placement="bottom" />
+                    <p class="text-danger mt-1" *ngIf="errTimeOut">Please input time out!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Reason</label>
+                    <input type="text" class="form-control" placeholder="Reason">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+        </div>
+        <div class="card-footer">
+          <ul class="nav justify-content-end">
+            <button class="btn btn-primary btn-icon-text">
+              <i data-feather="save" appFeatherIcon class="btn-icon-prepend"></i>  Save Changes
+            </button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

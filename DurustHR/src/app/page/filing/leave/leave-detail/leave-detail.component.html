@@ -1,0 +1,118 @@
+<div *ngIf="isLoading" class="spinner-wrapper">
+  <div class="spinner">Loading...</div>
+</div>
+<div class="animate__animated animate__fadeInUp" *ngIf="!isLoading">
+  <nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Company Setup</a></li>
+      <li class="breadcrumb-item"><a routerLink="/layout/filing/leave-view">Leave</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Detail</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Leave</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="control-label">Leave Type</label>
+                    <ng-select
+                    [items]="leaveList"
+                    bindLabel="description" 
+                    bindValue="id" 
+                    placeholder="Select Leave Type">
+                  </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Balance</label>
+                    <input type="text" class="form-control" placeholder="0">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Date From</label>
+                    <div class="input-group">
+                      <input class="form-control" placeholder="mm/dd/yyyy"
+                          name="dp" formControlName="selectedDate" (click)="df.toggle()" ngbDatepicker #df="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-light btn-icon calendar" type="button" (click)="df.toggle()">
+                          <i data-feather="calendar" appFeatherIcon class="text-secondary"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Date To</label>
+                    <div class="input-group">
+                      <input class="form-control" placeholder="mm/dd/yyyy"
+                          name="dp" formControlName="selectedDate" (click)="dt.toggle()" ngbDatepicker #dt="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-light btn-icon calendar" type="button" (click)="dt.toggle()">
+                          <i data-feather="calendar" appFeatherIcon class="text-secondary"></i>
+                        </button>
+                      </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label>Supporting Documents</label>
+                  <input type="file" name="img[]" class="file-upload-default" id="fileUploadInputExample">
+                  <div class="input-group col-xs-12" >
+                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload File">
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+										<div class="custom-control custom-switch">
+											<input type="checkbox" class="custom-control-input" id="customSwitch1">
+											<label class="custom-control-label" for="customSwitch1">With Pay?</label>
+										</div>
+										<div class="custom-control custom-switch">
+											<input type="checkbox" class="custom-control-input" id="customSwitch2">
+											<label class="custom-control-label" for="customSwitch2">Halfday?</label>
+										</div>
+									</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Reason</label>
+                    <input type="text" class="form-control" placeholder="Reason">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+        </div>
+        <div class="card-footer">
+          <ul class="nav justify-content-end">
+            <button class="btn btn-primary btn-icon-text">
+              <i data-feather="save" appFeatherIcon class="btn-icon-prepend"></i>  Save Changes
+            </button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

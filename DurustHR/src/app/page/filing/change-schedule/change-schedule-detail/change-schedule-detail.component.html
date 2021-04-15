@@ -1,0 +1,118 @@
+<div *ngIf="isLoading" class="spinner-wrapper">
+  <div class="spinner">Loading...</div>
+</div>
+<div class="animate__animated animate__fadeInUp" *ngIf="!isLoading">
+  <nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Filing</a></li>
+      <li class="breadcrumb-item"><a routerLink="/layout/filing/change-schedule-view">Change Schedule</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Detail</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h6>Change Schedule</h6>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label">Shift Code</label>
+                <ng-select 
+              [items]="shiftList"
+              name="Shift Code"
+              bindLabel="description" 
+              bindValue="id" 
+              placeholder="Select Shift Code"
+              formControlName="selectedShift">
+            </ng-select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label">Reason</label>
+                <input type="text" class="form-control" placeholder="Reason">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="control-label">Date From</label>
+                <div class="input-group">
+                  <input class="form-control" placeholder="mm/dd/yyyy"
+                      name="dp" formControlName="selectedDate" (click)="df.toggle()" ngbDatepicker #df="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-light btn-icon calendar" type="button" (click)="df.toggle()">
+                      <i data-feather="calendar" appFeatherIcon class="text-secondary"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="control-label">Date To</label>
+                <div class="input-group">
+                  <input class="form-control" placeholder="mm/dd/yyyy"
+                      name="dp" formControlName="selectedDate" (click)="dt.toggle()" ngbDatepicker #dt="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-light btn-icon calendar" type="button" (click)="dt.toggle()">
+                      <i data-feather="calendar" appFeatherIcon class="text-secondary"></i>
+                    </button>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12"> 
+              <div class="text-right">
+                <button type="button" class="btn btn-primary btn-icon-text">
+                  <i data-feather="search" appFeatherIcon class="btn-icon-prepend"></i>
+                  Search
+                </button> &nbsp;
+            </div>
+          </div>
+        </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table id="dataTableExample" class="table">
+                  <thead>
+                    <tr>
+                      <th>Shift Code</th>
+                      <th>Date</th>
+                      <th>Old Schedule In</th>
+                      <th>Old Schedule Out</th>
+                      <th>Schedule In</th>
+                      <th>Schedule Out</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   <tr>
+                     <td>Shift Code 1</td>
+                     <td>03/26/2021</td>
+                     <td>03/26/2021 08:00 AM</td>
+                     <td>03/26/2021 08:00 PM</td>
+                     <td>03/26/2021 12:00 PM</td>
+                     <td>03/26/2021 09:00 PM</td>
+                   </tr>
+                  </tbody>
+                  <tfoot></tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+      <div class="card-footer">
+        <ul class="nav justify-content-end">
+          <button class="btn btn-primary btn-icon-text">
+            <i data-feather="save" appFeatherIcon class="btn-icon-prepend"></i> Save Changes
+          </button>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>  
+  </div>
